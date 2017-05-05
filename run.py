@@ -58,3 +58,4 @@ def add_announcers(filename, dir = torrent_dir):
 if __name__ == "__main__":
 	for i in filenames:
 		add_announcers(i)
+	input('Press enter to close window...')
