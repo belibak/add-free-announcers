@@ -2,18 +2,22 @@
 import encode
 import argparse
 import os
+import sys
 
-from config import find_dir
+from config import torrent_dir
 from getlist import get_list
 
-edited_dir = find_dir + 'announcers_added/'
+if sys.platform != 'win32':
+	edited_dir = torrent_dir + 'announcers_added/'
+else:
+	edited_dir = torrent_dir + 'announcers_added\\'
 
 if os.path.exists(edited_dir):
 		pass
 else:
 	os.mkdir(edited_dir)
 
-def find_torrents(dir = find_dir):
+def find_torrents(dir = torrent_dir):
 	files = [i for i in os.listdir(dir) if i[-7:] == 'torrent']
 	return files
 
@@ -27,7 +31,7 @@ def args():
 filenames = find_torrents()
 
 
-def add_announcers(filename, dir = find_dir):
+def add_announcers(filename, dir = torrent_dir):
 	with open(dir + filename, 'rb') as file:
 		tdb = file.read()
 		other = encode.bdecode(tdb)
