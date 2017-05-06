@@ -36,7 +36,10 @@ def add_announcers(filename, dir = torrent_dir):
 		tdb = file.read()
 		other = encode.bdecode(tdb)
 		dct = other
-		ann_list = dct['announce-list']
+		try:
+			ann_list = dct['announce-list']
+		except KeyError:
+			ann_list = []
 
 	announcers = get_list()
 
