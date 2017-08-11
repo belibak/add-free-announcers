@@ -60,5 +60,8 @@ def add_announcers(filename, dir = torrent_dir):
 
 if __name__ == "__main__":
 	for i in filenames:
-		add_announcers(i)
+		try:
+			add_announcers(i)
+		except encode.DecodingException:
+			print("Decoding exception in file \"" + i + "\"")
 	input('Press enter to close window...')
