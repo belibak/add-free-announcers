@@ -12,9 +12,7 @@ if sys.platform != 'win32':
 else:
 	edited_dir = torrent_dir + 'announcers_added\\'
 
-if os.path.exists(edited_dir):
-		pass
-else:
+if not os.path.exists(edited_dir):
 	os.mkdir(edited_dir)
 
 def find_torrents(dir = torrent_dir):
